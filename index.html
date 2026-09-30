@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>mi galletita</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--aqua:#8fdcd0;--pale:#e3f7f3;--teal:#1f5b57;--white:#fbfffe;--berry:#ff8fb1;--kirby:#ffb3d1;
+--serif:"Cormorant Garamond",Georgia,serif;--sans:"Nunito",system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--teal);font:400 1.05rem/1.6 var(--sans);text-align:center}
+section{padding:3.5rem 1.4rem;max-width:34rem;margin:0 auto}
+section:nth-of-type(even){background:linear-gradient(var(--pale),var(--white))}
+h1,h2{font-family:var(--serif);font-weight:600;font-style:italic;margin:0 0 .6rem;line-height:1.05}
+h1{font-size:3.6rem}
+h2{font-size:2.1rem}
+p{margin:.4rem 0 1rem}
+.hint{font-size:.9rem;opacity:.75}
+
+/* Portada */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.angel{position:relative;width:220px;height:110px;margin-bottom:1rem}
+.halo{position:absolute;left:50%;top:0;width:74px;height:20px;margin-left:-37px;border:5px solid #f6e7a8;border-radius:50%;box-shadow:0 0 18px 4px #fff6c9;animation:glow 3s ease-in-out infinite alternate}
+.angel svg{position:absolute;left:0;top:26px;width:100%}
+@keyframes glow{to{box-shadow:0 0 28px 8px #ffefa0}}
+.scroll{margin-top:2rem;color:var(--teal);opacity:.7;text-decoration:none;font-size:.95rem}
+
+/* Carta Pokémon */
+.scene{perspective:900px;width:min(300px,82vw);height:420px;margin:1.5rem auto 0;cursor:pointer}
+.card{position:relative;width:100%;height:100%;transition:transform .8s;transform-style:preserve-3d}
+.scene.flip .card{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:14px;text-align:left;
+border:7px solid #f3e6a6;background:linear-gradient(140deg,#f4fffd,#c9f0ea 45%,#f9fdff 70%,#d7f3ee);
+box-shadow:0 10px 30px rgba(31,91,87,.25)}
+.back{transform:rotateY(180deg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+background:radial-gradient(circle at 50% 50%,#fff 0 22px,#8fdcd0 23px 60px,#fff 61px 64px,#6cc8bb 65px)}
+.back span{background:#fff;padding:.4rem .8rem;border-radius:12px;font-size:.85rem;margin-top:150px}
+.top{display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
+.top b{font-family:var(--serif);font-size:1.5rem;font-style:italic}
+.art{height:130px;margin:8px 0;border-radius:8px;border:3px solid #f3e6a6;display:grid;place-items:center;
+background:radial-gradient(circle at 50% 30%,#fff,#aee8df)}
+.art svg{width:110px}
+.types{display:flex;gap:.4rem;font-size:.75rem;margin-bottom:.5rem}
+.types i{font-style:normal;background:#fff;border-radius:99px;padding:.05rem .6rem}
+.move{font-size:.82rem;line-height:1.35;margin:.5rem 0}
+.move b{display:flex;justify-content:space-between;font-size:.92rem}
+.foot{position:absolute;left:14px;right:14px;bottom:10px;font-size:.72rem;opacity:.8}
+
+/* Ramo */
+.garden{position:relative;height:250px;margin-top:1rem;border-radius:22px;background:var(--pale);overflow:hidden;cursor:pointer;touch-action:manipulation}
+.garden .bloom{position:absolute;font-size:2.2rem;transform:translate(-50%,-50%) scale(0);animation:pop .6s forwards;pointer-events:none}
+@keyframes pop{60%{transform:translate(-50%,-50%) scale(1.3)}to{transform:translate(-50%,-50%) scale(1)}}
+
+/* Kirby */
+.kirby-wrap{height:230px;display:grid;place-items:center}
+.kirby{position:relative;width:120px;height:120px;border-radius:50%;background:var(--kirby);cursor:pointer;
+transition:transform .6s cubic-bezier(.3,1.6,.5,1);box-shadow:inset -10px -10px 0 rgba(255,120,170,.25);border:0;padding:0}
+.kirby.big{transform:scale(1.7)}
+.kirby i{position:absolute;top:34%;width:12px;height:26px;background:#2b2b55;border-radius:50%}
+.kirby i::after{content:"";position:absolute;top:3px;left:2px;width:6px;height:9px;background:#fff;border-radius:50%}
+.kirby .l{left:36%}.kirby .r{left:56%}
+.kirby em{position:absolute;top:58%;width:16px;height:9px;background:#ff7fa8;border-radius:50%}
+.kirby .cl{left:14%}.kirby .cr{right:14%}
+.kirby::before,.kirby::after{content:"";position:absolute;bottom:-14px;width:44px;height:24px;background:#e8557f;border-radius:50%;z-index:-1}
+.kirby::before{left:-8px;transform:rotate(-15deg)}.kirby::after{right:-8px;transform:rotate(15deg)}
+.kmsg{min-height:3rem;font-family:var(--serif);font-style:italic;font-size:1.5rem}
+
+/* Carta y cupones */
+.letter{background:#fff;border-radius:18px;padding:1.6rem 1.4rem;box-shadow:0 8px 24px rgba(31,91,87,.12);text-align:left;font-family:var(--serif);font-size:1.3rem;line-height:1.5}
+.letter p:last-child{text-align:right;margin-bottom:0}
+.coupon{display:block;width:100%;text-decoration:none;margin:.8rem 0;padding:1rem 1.2rem;border:2px dashed var(--aqua);border-radius:16px;
+background:#fff;color:var(--teal);font:600 1.05rem var(--sans);cursor:pointer;text-align:left}
+.coupon small{display:block;font-weight:400;opacity:.75}
+.coupon.used{background:var(--aqua);border-style:solid}
+.coupon.used::after{content:" ✓ ¡Canjeado!";float:right}
+footer{padding:2.5rem 1rem 3rem;font-family:var(--serif);font-style:italic;font-size:1.4rem}
+:focus-visible{outline:3px solid var(--berry);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="angel" aria-hidden="true">
+    <div class="halo"></div>
+    <svg viewBox="0 0 220 80" fill="#fff" stroke="#8fdcd0" stroke-width="2">
+      <path d="M104 40C80 10 40 6 6 18c22 4 30 14 34 24-14-2-26 0-34 4 20 4 30 12 36 22-10 0-18 2-24 6 26 6 60 4 86-34z"/>
+      <path d="M116 40c24-30 64-34 98-22-22 4-30 14-34 24 14-2 26 0 34 4-20 4-30 12-36 22 10 0 18 2 24 6-26 6-60 4-86-34z"/>
+    </svg>
+  </div>
+  <p class="hint">30 de septiembre</p>
+  <h1>Feliz cumpleaños, mi galletita</h1>
+  <p>Hanni, este regalo es para ti.</p>
+  <a class="scroll" href="#carta-pokemon">Desliza hacia abajo ↓</a>
+</section>
+
+<section id="carta-pokemon">
+  <h2>Encontraste una carta rara</h2>
+  <p class="hint">Tócala para darle la vuelta.</p>
+  <div class="scene" id="scene" role="button" tabindex="0" aria-label="Carta Pokémon de Hanni, toca para girar">
+    <div class="card">
+      <div class="face front">
+        <div class="top"><b>Hanni</b><span>PS 999</span></div>
+        <div class="types"><i>Ángel</i><i>Agua</i></div>
+        <div class="art">
+          <svg viewBox="0 0 100 90" aria-hidden="true">
+            <ellipse cx="50" cy="8" rx="17" ry="5" fill="none" stroke="#f0d878" stroke-width="3"/>
+            <path d="M42 50C28 30 10 28 2 34c10 2 14 8 16 14-8-1-12 0-16 3 10 3 16 8 20 14z" fill="#fff" stroke="#6cc8bb" stroke-width="1.5"/>
+            <path d="M58 50c14-20 32-22 40-16-10 2-14 8-16 14 8-1 12 0 16 3-10 3-16 8-20 14z" fill="#fff" stroke="#6cc8bb" stroke-width="1.5"/>
+            <circle cx="50" cy="52" r="20" fill="#fff" stroke="#6cc8bb" stroke-width="2"/>
+            <circle cx="43" cy="50" r="2.4" fill="#1f5b57"/><circle cx="57" cy="50" r="2.4" fill="#1f5b57"/>
+            <path d="M45 57q5 5 10 0" stroke="#1f5b57" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="38" cy="56" r="3" fill="#ff9dbb" opacity=".7"/><circle cx="62" cy="56" r="3" fill="#ff9dbb" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="move"><b><span>Abrazo Serafín</span><span>90</span></b>Deja a cualquiera sin preocupaciones por el resto del día.</div>
+        <div class="move"><b><span>Sonrisa</span><span>50+</span></b>Sube el ánimo de quien esté cerca. Más daño si hay frutillas.</div>
+        <div class="foot">Debilidad: arándanos y frutillas. Edición cumpleaños 2026.</div>
+      </div>
+      <div class="face back"><span>Carta única, solo para ti</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Un ramo para ti</h2>
+  <p>Toca el jardín y mira qué florece.</p>
+  <div class="garden" id="garden" role="button" tabindex="0" aria-label="Toca para hacer florecer flores"></div>
+</section>
+
+<section>
+  <h2>Alguien quiere saludarte</h2>
+  <div class="kirby-wrap">
+    <button class="kirby" id="kirby" aria-label="Toca a Kirby"><i class="l"></i><i class="r"></i><em class="cl"></em><em class="cr"></em></button>
+  </div>
+  <div class="kmsg" id="kmsg">Tócalo</div>
+</section>
+
+<section>
+  <h2>Lo que quiero decirte</h2>
+  <div class="letter">
+    <p>Mi galletita:</p>
+    <p>Sabes que te amo mucho, mi amor. Me haces muy feliz y, de la misma manera, quiero que disfrutes hoy este día tan especial y la pases súper bien. Cuenta conmigo para lo que sea. Estoy muy orgulloso de ti, mi Hanitilla.</p>
+    <p>Con cariño, Elian</p>
+  </div>
+</section>
+
+<section>
+  <h2>Cupones para ti</h2>
+  <p class="hint">Toca uno para canjearlo y me llega tu mensaje por WhatsApp.</p>
+  <a class="coupon" href="https://wa.me/593992847013?text=Hola%20amor%2C%20quiero%20canjear%20mi%20cup%C3%B3n%20de%20una%20invitaci%C3%B3n%20a%20comer%20%F0%9F%8D%93%20%28mentiramorteamo%29" target="_blank" rel="noopener">Una invitación a comer<small>Tú eliges el lugar (mentiramorteamo)</small></a>
+  <a class="coupon" href="https://wa.me/593992847013?text=Hola%20amor%2C%20quiero%20canjear%20mi%20cup%C3%B3n%20de%20una%20tarde%20de%20entretenimiento%20%F0%9F%8E%AE" target="_blank" rel="noopener">Una tarde de entretenimiento<small>Juegos, series o lo que gustes.</small></a>
+  <a class="coupon" href="https://wa.me/593992847013?text=Hola%20amor%2C%20quiero%20canjear%20mi%20cup%C3%B3n%20de%20una%20salida%20al%20cine%20%F0%9F%8E%AC" target="_blank" rel="noopener">Una salida al cine<small>La película la elijo yo.</small></a>
+</section>
+
+<footer>Te quieroamoadoro mi galletita. Feliz cumpleaños.</footer>
+
+<script>
+function act(el,fn){el.addEventListener('click',fn);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn(e)}})}
+const scene=document.getElementById('scene');
+act(scene,()=>scene.classList.toggle('flip'));
+
+const garden=document.getElementById('garden'),flowers=['🌷','🌷','🤍','🫐','🍓','🌷'];
+let n=0;
+function bloom(x,y){
+  const b=document.createElement('span');b.className='bloom';b.textContent=flowers[n++%flowers.length];
+  b.style.left=x+'px';b.style.top=y+'px';garden.appendChild(b);
+  if(garden.children.length>40)garden.firstChild.remove();
+}
+garden.addEventListener('click',e=>{const r=garden.getBoundingClientRect();bloom(e.clientX-r.left,e.clientY-r.top)});
+garden.addEventListener('keydown',e=>{if(e.key==='Enter'){bloom(Math.random()*garden.clientWidth,Math.random()*garden.clientHeight)}});
+
+const k=document.getElementById('kirby'),km=document.getElementById('kmsg');
+const msgs=['Tócalo','¡Poyo! Feliz cumpleaños, Hanni 💗','Poyo poyo, te quiere mucho 🍓'];
+let ki=0;
+k.addEventListener('click',()=>{
+  ki=(ki+1)%3;
+  k.classList.toggle('big',ki===1);
+  km.textContent=msgs[ki];
+});
+
+document.querySelectorAll('.coupon').forEach(c=>c.addEventListener('click',()=>c.classList.add('used')));
+</script>
+</body>
+</html>
